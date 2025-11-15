@@ -1,0 +1,111 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+@import "tailwindcss";
+
+/* Theme config (thay cho tailwind.config.js) */
+
+:root {
+  /* Lấy tông từ logo VoltSwap: xanh ngọc -> xanh dương */
+  --brand-start: #1ee3b3; /* mint/teal từ chữ "Volt" */
+  --brand-end: #2f66ff; /* blue từ chữ "Swap" */
+  --brand-50: #f5faff; /* nền rất nhẹ */
+  --brand-500: #2f66ff; /* màu nhấn khi không dùng gradient */
+  --brand-600: #2856d4; /* hover/pressed */
+}
+
+/* Helper class cho gradient theo brand */
+.brand-gradient {
+  background-image: linear-gradient(
+    90deg,
+    var(--brand-start),
+    var(--brand-end)
+  );
+}
+.text-brand-gradient {
+  background-image: linear-gradient(
+    90deg,
+    var(--brand-start),
+    var(--brand-end)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.brand-focus:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(47, 102, 255, 0.25);
+}
+
+@theme {
+  --color-primary: #3b82f6;
+  --color-secondary: #10b981;
+  --color-accent: #f59e0b;
+
+  --animate-fade-in: fadeIn 0.5s ease-in-out;
+  --animate-slide-up: slideUp 0.5s ease-out;
+
+  /* == Reusable components == */
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes slideUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Base styles */
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: #ffffff;
+  color: #1f2937;
+}
+
+@layer base {
+  .font-lobster {
+    font-family: "Lobster", cursive;
+  }
+}
+
+/* Components bằng Tailwind utilities */
+.btn-primary {
+  @apply bg-primary text-white px-6 py-3 rounded-lg font-semibold 
+         hover:bg-blue-600 transition-all duration-300 shadow-lg 
+         hover:shadow-xl transform hover:-translate-y-1;
+}
+
+.btn-secondary {
+  @apply bg-transparent border-2 border-primary text-primary px-6 py-3 
+         rounded-lg font-semibold hover:bg-primary hover:text-white 
+         transition-all duration-300;
+}
+
+.card {
+  @apply bg-white rounded-xl shadow-lg hover:shadow-xl 
+         transition-all duration-300 transform hover:-translate-y-2;
+}
+
+.section-padding {
+  @apply py-16 px-4 md:px-8 lg:px-16;
+}

@@ -1,0 +1,464 @@
+/* ========== Design tokens ========== */
+:root {
+  --bg: #f4f6fb;
+  --panel: #fff;
+  --text: #0f172a;
+  --muted: #64748b;
+  --line: #e5e7eb;
+  --primary: #3b82f6;
+  --primary-700: #2563eb;
+  --violet-700: #5b21b6;
+  --violet-800: #4c1d95;
+  --green: #10b981;
+  --red: #ef4444;
+  --radius: 16px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, system-ui, Arial, sans-serif;
+}
+
+/* ========== Staff Shell: Sidebar trái, Content phải (full height) ========== */
+.staff-shell {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  /* trái 280px, phải chiếm còn lại */
+  min-height: 100vh;
+  background: var(--bg);
+}
+
+.staff-content {
+  padding: 24px;
+  overflow: auto;
+  /* nội dung dài thì scroll ở cột phải */
+}
+
+/* ========== Sidebar ========== */
+.sidebar {
+  background: var(--violet-800);
+  color: #fff;
+  border-radius: 0;
+  /* sát mép trái */
+  padding: 16px;
+}
+
+.sidebar .avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  color: #e9d5ff;
+  text-decoration: none;
+}
+
+.nav-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.nav-item.active {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
+/* ========== Surfaces ========== */
+.card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.border {
+  border: 1px solid var(--line);
+}
+
+/* ========== Grid helpers ========== */
+.grid {
+  display: grid;
+  gap: 24px;
+}
+
+.grid-12 {
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.col-12 {
+  grid-column: span 12;
+}
+
+@media (min-width: 768px) {
+  .md-col-3 {
+    grid-column: span 3;
+  }
+
+  .md-col-4 {
+    grid-column: span 4;
+  }
+
+  .md-col-5 {
+    grid-column: span 5;
+  }
+
+  .md-col-6 {
+    grid-column: span 6;
+  }
+
+  .md-col-8 {
+    grid-column: span 8;
+  }
+
+  .md-col-9 {
+    grid-column: span 9;
+  }
+}
+
+/* ========== Typography ========== */
+.h1 {
+  font-size: 28px;
+  font-weight: 800;
+  margin: 0 0 6px;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.small {
+  font-size: 12px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* ========== Form / Inputs / Buttons ========== */
+.input {
+  height: 36px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0 10px;
+  font-size: 14px;
+  width: 100%;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.15);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: #fff;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #f8fafc;
+}
+
+.btn-primary {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--primary-700);
+}
+
+/* ========== Widgets ========== */
+.kpis {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.kpi {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px;
+}
+
+.badge {
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.badge.ok {
+  background: rgba(16, 185, 129, 0.15);
+  color: #059669;
+}
+
+.badge.down {
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+}
+
+.bar {
+  height: 8px;
+  background: #e5e7eb;
+  border-radius: 999px;
+  overflow: hidden;
+  display: inline-block;
+  width: 140px;
+  margin-right: 8px;
+}
+
+.fill {
+  height: 100%;
+  background: var(--primary);
+}
+
+/* ========== Table (nếu dùng) ========== */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.table th,
+.table td {
+  padding: 10px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+}
+
+/* ========== Utilities ========== */
+.flex {
+  display: flex;
+  gap: 12px;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.mt-2 {
+  margin-top: 8px;
+}
+
+.mt-3 {
+  margin-top: 12px;
+}
+
+.mt-4 {
+  margin-top: 16px;
+}
+
+.mt-6 {
+  margin-top: 24px;
+}
+
+.mb-2 {
+  margin-bottom: 8px;
+}
+
+.mb-3 {
+  margin-bottom: 12px;
+}
+
+.p-2 {
+  padding: 8px;
+}
+
+.p-3 {
+  padding: 12px;
+}
+
+.p-4 {
+  padding: 16px;
+}
+
+.h-56 {
+  height: 224px;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+/* Brand block (không avatar) */
+.brand-tile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.12);
+  margin-bottom: 8px;
+}
+
+.brand-badge {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.2);
+  font-size: 18px;
+}
+
+/* === Overview KPI 3 cột === */
+.kpi3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.kpi-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.kpi-ico {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: #f4f7ff;
+  font-size: 22px;
+}
+
+.kpi-title {
+  font-weight: 600;
+  color: #111827;
+}
+
+.kpi-value {
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1;
+  margin-top: 4px;
+}
+
+/* === Tickets / Incidents === */
+.tickets {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.tickets-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.ticket {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 8px;
+  border-top: 1px solid var(--line);
+}
+
+.ticket:first-of-type {
+  border-top: none;
+}
+
+.ticket-title {
+  font-weight: 600;
+}
+
+.ticket-sub {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.ticket-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pill {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  border: 1px solid transparent;
+}
+
+.pill.pending {
+  color: #ef4444;
+  background: #fff5f5;
+  border-color: #fecaca;
+}
+
+.pill.processing {
+  color: #6d28d9;
+  background: #f5f3ff;
+  border-color: #ddd6fe;
+}
+
+.time {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.nav-item {
+  transition: background 0.2s ease, color 0.2s ease, transform 0.12s ease;
+}
+
+.nav-item:active {
+  transform: scale(0.98);
+}
